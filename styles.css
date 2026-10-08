@@ -108,10 +108,10 @@ p + p {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)),
-                url('https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/homepage background.avif');
+    background: linear-gradient(rgba(44, 62, 80, 0.55), rgba(44, 62, 80, 0.55)),
+                url('hero-collaboration.avif');
     background-size: cover;
-    background-position: center;
+    background-position: center 0%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -449,6 +449,10 @@ footer section a {
 
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .hero {
+        background-position: 25% 0%;
     }
 
     .hero h1 {
