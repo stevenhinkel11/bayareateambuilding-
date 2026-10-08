@@ -108,7 +108,8 @@ p + p {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(44, 62, 80, 0.55), rgba(44, 62, 80, 0.55)),
+    background: radial-gradient(ellipse at center, rgba(44, 62, 80, 0.45) 0%, rgba(44, 62, 80, 0) 65%),
+                linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.3)),
                 url('hero-collaboration.avif');
     background-size: cover;
     background-position: center 0%;
@@ -124,12 +125,14 @@ p + p {
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
     animation: fadeInUp 1s ease;
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
     animation: fadeInUp 1s ease 0.3s;
     animation-fill-mode: both;
 }
@@ -453,6 +456,9 @@ footer section a {
 
     .hero {
         background-position: 25% 0%;
+        height: calc(100vh - 90px);
+        justify-content: flex-end;
+        padding-bottom: 2.5rem;
     }
 
     .hero h1 {
