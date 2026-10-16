@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/rkcx69fqsgggfg6vbz1p.avif',
             'https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/rkpxijlxbmgpfqdv6kyr.avif',
             'https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/rpm3pegprolzskhkhnhm.avif',
-            'https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/stvdct4oecxtoa2rhcrh.avif',
             'https://raw.githubusercontent.com/stevenhinkel11/leadingedgeteambuilding-/Images/vqq6tpluwtravxcvmedp.avif'
         ];
 
