@@ -489,6 +489,11 @@
                             <label for="newsletter">Subscribe to our newsletter for team building tips and updates</label>
                         </div>
 
+                        <!-- Cloudflare Turnstile CAPTCHA (verified by Formspree) -->
+                        <div class="form-group">
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFtnwr6N6T6Kutya"></div>
+                        </div>
+
                         <div class="success-message" id="successMessage">
                             Thank you for your inquiry! We'll get back to you within 24 hours.
                         </div>
@@ -518,6 +523,7 @@
         </div>
     </footer>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="script.js"></script>
     <script>
         // Form submission with Formspree (AJAX)
@@ -547,11 +553,21 @@
             });
             
             if (!allValid) {
+                errorMessage.textContent = 'Please fill in all required fields and try again.';
                 errorMessage.style.display = 'block';
                 errorMessage.scrollIntoView({ behavior: 'smooth' });
                 return;
             }
             
+            // Require a solved CAPTCHA (Turnstile adds cf-turnstile-response to the form)
+            const captchaField = form.querySelector('[name="cf-turnstile-response"]');
+            if (!captchaField || !captchaField.value) {
+                errorMessage.textContent = 'Please complete the CAPTCHA check and try again.';
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
             // Show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -577,6 +593,7 @@
                     // Show success message
                     successMessage.style.display = 'block';
                     form.reset();
+                    if (window.turnstile) turnstile.reset();
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                     
                     // Re-enable submit button
@@ -588,7 +605,9 @@
             })
             .catch(error => {
                 // Show error message
+                errorMessage.textContent = 'Something went wrong sending your inquiry. Please try again.';
                 errorMessage.style.display = 'block';
+                if (window.turnstile) turnstile.reset();
                 errorMessage.scrollIntoView({ behavior: 'smooth' });
                 
                 // Re-enable submit button
